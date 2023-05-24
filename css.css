@@ -1,39 +1,35 @@
-#restart {
+body {
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
-.table, th, td {
-    border:1px solid black;
-    border-collapse:collapse;
-    
-  }
 
-.box {
-    height: 45px;
-    width: 45px;
-    background-color: #bbb;
-    border-radius: 45%;
-    display: inline-block;
-    
+#board {
+    height: 540px;
+    width: 640px;
+
+    background-color: navy;
+    border: 5px solid black;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#circ1{
+.grid {
+    height: 78px;
+    width: 78px;
+    margin: 5px;
+
+    background-color: white;
+    border-radius: 50%;
+    border : 2px solid black;
+
+}
+
+.redPice{
     background-color: red;
-    width: 50px;
-    height: 50px;
-    border-radius:50px;
 }
 
-#circ2{
+.yellowPice{
     background-color: yellow;
-    width: 50px;
-    height: 50px;
-    border-radius:50px;
 }
-
-#messageWinner {
-    font-size: 50px;
-    top: 25px;
-    float: right;
-    margin-right: 400px;
-}
-

@@ -1,18 +1,19 @@
 const boxRed = "Red";
 const boxYellow = "Yellow";
 let currPlayer = boxRed;
-
+let start;
 const rows = 6;
 const colum = 7;
 let blockCell = false;
-let board ;
+let currentColumns;
+let board;
 
 
 function createGrid() {
-    let start = document.getElementById("Start");
+    start = document.getElementById("button1");
     start.style.display = "none";
     board = [];
-   
+    currentColumns = [5, 5, 5, 5, 5, 5, 5];
     for(let i = 0; i < rows; ++i) {
         let row = [];
         for(let j = 0; j < colum; ++j){
@@ -39,7 +40,7 @@ function coloringCell(){
     let r = Number(coord[0]);
     let c = Number(coord[1]);
 
-
+    r = currentColumns[c];
     board[r][c] = currPlayer;
     let cell = document.getElementById(r.toString() + "-" + c.toString());
     if (currPlayer == boxRed){
@@ -50,16 +51,12 @@ function coloringCell(){
         currPlayer = boxRed;
     }
     
+    currentColumns[c] = --r;
 
-    if (horizontally() ){
-        setWinner(r, c);
-    } else if (Vertically ()) {
-        setWinner(r, c);
-    } else if (secoDiagonal()) { 
-        setWinner(r, c);
-    } else if (mainDiagonal()) {
-        setWinner(r, c);
-    }
+    horizontally(); 
+    Vertically ();
+    secoDiagonal();
+    mainDiagonal();
 }
 
 function horizontally() {
@@ -69,7 +66,7 @@ function horizontally() {
                 if (board[r][c] == board[r][c + 1] && 
                     board[r][c + 1] == board[r][c + 2] && 
                     board[r][c + 2] == board[r][c + 3]) {
-                    return true;
+                    setWinner(r, c);
                 } 
             }
         }
@@ -83,7 +80,7 @@ function Vertically () {
                 if (board[r][c] == board[r + 1][c] && 
                     board[r + 1][c] == board[r + 2][c] && 
                     board[r + 2][c] == board[r + 3][c]) {
-                    return true;
+                    setWinner(r, c);
                 }
             }  
         }
@@ -97,7 +94,7 @@ function secoDiagonal()  {
                 if (board[r][c] == board[r - 1][c + 1] &&
                     board[r - 1][c + 1] == board[r - 2][c + 2] &&
                     board[r - 2][c + 2] == board[r - 3][c + 3]) {
-                    return true;
+                    setWinner(r, c);
                 }
             }
         }
@@ -110,7 +107,7 @@ function mainDiagonal () {
                  if (board[r][c] == board[r + 1][c + 1] &&
                     board[r + 1][c + 1] == board[r + 2][c + 2] &&
                     board[r + 2][c + 2] == board[r + 3][c + 3]) {
-                    return true;
+                    setWinner(r, c);
                 }
             }
         }
@@ -121,9 +118,9 @@ function mainDiagonal () {
 function setWinner(r, c) {
     let winner = document.getElementById("messageWinner");
     if (board[r][c] == boxRed) {
-        winner.innerText = `${boxRed} has won!🎉`;
+        winner.innerText = `Red has won!🎉`;
     } else {
-        winner.innerText = `${boxYellow} has won!🎉`;
+        winner.innerText = `Yellow has won!🎉`;
     }
     blockCell = true;
 }

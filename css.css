@@ -6,10 +6,8 @@ body {
 #board {
     height: 540px;
     width: 640px;
-
     background-color: navy;
     border: 5px solid black;
-
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -19,11 +17,9 @@ body {
     height: 78px;
     width: 78px;
     margin: 5px;
-
     background-color: white;
     border-radius: 50%;
     border : 2px solid black;
-
 }
 
 .redPice{

@@ -8,7 +8,6 @@ let blockCell = false;
 let currentColumns;
 let board;
 
-
 function createGrid() {
     start = document.getElementById("button1");
     start.style.display = "none";
@@ -24,14 +23,11 @@ function createGrid() {
             grid.addEventListener("click", coloringCell);
             document.getElementById("board").append(grid);
         }
-        board.push(row);
-        
-    }
-    
+        board.push(row);  
+    } 
 }
 
 function coloringCell(){
-
     if (blockCell) {
         return;
     }
@@ -39,7 +35,6 @@ function coloringCell(){
     console.log(coord);
     let r = Number(coord[0]);
     let c = Number(coord[1]);
-
     r = currentColumns[c];
     board[r][c] = currPlayer;
     let cell = document.getElementById(r.toString() + "-" + c.toString());
@@ -50,9 +45,7 @@ function coloringCell(){
         cell.classList.add("yellowPice");
         currPlayer = boxRed;
     }
-    
     currentColumns[c] = --r;
-
     horizontally(); 
     Vertically ();
     secoDiagonal();
@@ -112,7 +105,6 @@ function mainDiagonal () {
             }
         }
     }
-
 }
 
 function setWinner(r, c) {
